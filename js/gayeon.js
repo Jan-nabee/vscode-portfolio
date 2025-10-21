@@ -19,13 +19,6 @@ $(document).ready(function () {
   //초기상태 
   showByLabel('');
 
-  // 메뉴 클릭
-  $('.menu-item').on('click', function (e) {
-    e.preventDefault();
-    const label = $(this).find('.label').text().trim();
-    showByLabel(label);
-  });
-
 
 
   // 어사이드 메뉴 순차 등장
@@ -159,6 +152,14 @@ $(document).ready(function () {
       $('.hero').show();
     }
   });
+
+  $('#logoLink').on('click', function (e) {
+    e.preventDefault();
+    const clean = location.origin + location.pathname;
+    location.replace(clean);
+  });
+
+
   // 아코디언 기능
   $('.accordion-header').on('click', function () {
     const $header = $(this);

@@ -8,50 +8,47 @@
     <link rel="stylesheet" href="css/gayeon.css">
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
 
-    <!-- gsap -->
-    <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-
-
     <script src="js/jquery-3.7.1.min.js"></script>
     <script src="js/jquery-ui.min.js"></script>
 </head>
 <body>
     <div class="container">
         <div class="upperbar">
-            <img src="img/logo_vscode.png" alt="코딩디자인컨셉로고">
-            <span>Portfolio</span>
+            <a href="#hero" id="logoLink">
+                <img src="img/logo_vscode.png" alt="코딩디자인컨셉로고">
+                <span>Portfolio</span>
+            </a>
         </div>
         <!-- 어사이드 메뉴 -->
         <aside class="sidebar">
         <ul class="sidebar-menu">
             <li class="menu-item on">
-                <a href="/">
+                <a href="#">
                     <img src="img/ico_about.png" alt="about">
                     <span class="label">About</span>
                     <span class="green-comment">&lt;!-- click me~ --&gt;</span>
                 </a>
             </li>
             <li class="menu-item">
-                <a href="/">
+                <a href="#">
                     <img src="img/ico_skills.png" alt="about">
                     <span class="label">Skills</span>
                 </a>
             </li>
             <li class="menu-item">
-                <a href="/">
+                <a href="#">
                     <img src="img/ico_projects.png" alt="about">
                     <span class="label">Projects</span>
                 </a>
             </li>
             <li class="menu-item">
-                <a href="/">
+                <a href="#">
                     <img src="img/ico_strengths.png" alt="about">
                     <span class="label">Strengths</span>
                 </a>
             </li>
             <li class="menu-item">
-                <a href="/">
+                <a href="#">
                     <img src="img/ico_contact.png" alt="about">
                     <span class="label">Contact</span>
                 </a>
@@ -63,7 +60,7 @@
         <!-- 메인 히어로 -->
         <main>
             <!-- 기본 홈 화면 -->
-            <section class="hero">
+            <section class="hero" id="hero">
                 <div class="hero-overlay"></div>
                 <div class="overlay-text">
                     <h1 id="typing-title"><span class="cursor">|</span></h1>
@@ -294,25 +291,51 @@
             </section>
             <section class="projects_page">
                 <div class="project-box">
-                    <div class="project-title">포트폴리오 페이지</div>
+                    <div class="project-title">VSCode-st Portfolio</div>
                     <figure>
                         <img src="img/sumnail-portfolio.PNG" alt="">
                     </figure>
                     <div class="project-details">
-                        <p>감정 기반 티 루틴 기록 서비스</p>
-                        <p>기술: HTML/CSS/JS</p>
-                        <a href="#">👉 GitHub</a>
+                        <p class="pj-title">VScode 모티브의 포트폴리오 페이지</p>
+                        <p class="pj-desc">- 브랜드마케터에서 프론트엔드로 확장하는 성장 과정을 담은 대표 프로젝트</p>
+                        <p class="pj-desc">- 실제 개발 환경을 연상시키는 UI로 <strong>‘코드를 이해하는 사람’에게 직관적으로 다가가는 UX</strong> 제공</p>
+                        <p class="pj-desc">- FIGMA를 활용한 기획 디자인부터 구조적 마크업, 반응형 설계, 세밀한 CSS 컨트롤</p>
+                        <div class="pj-tag_area">
+                            <span class="pj-tag">HTML</span>
+                            <span class="pj-tag">CSS</span>
+                            <span class="pj-tag">JS</span>
+                            <span class="pj-tag">jQuery</span>
+                            <span class="pj-tag">GSAP</span>
+                        </div>
+                        <div class="btn_area">
+                            <a href="#" class="btn" target="_blank" rel="noopener">Live Demo</a>
+                            <a href="https://github.com/Jan-nabee/vscode-portfolio" class="btn" target="_blank" rel="noopener">GitHub</a>
+                            <a href="https://velog.io/@jan-nabee/VS-Code-st-%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4-%ED%8E%98%EC%9D%B4%EC%A7%80-%EB%A7%8C%EB%93%A4%EA%B8%B0" class="btn" target="_blank" rel="noopener">Vlog 제작기</a>
+                        </div>
                     </div>
                 </div>
                 <div class="project-box">
-                    <div class="project-title">차분일기</div>
+                    <div class="project-title">차(茶)분일기</div>
                     <figure>
                         <img src="img/sumnail-chaboon.PNG" alt="">
                     </figure>
                     <div class="project-details">
-                        <p>감정 기반 티 루틴 기록 서비스</p>
-                        <p>기술: HTML/CSS/JS</p>
-                        <a href="#">👉 GitHub</a>
+                        <p class="pj-title">감정 기반 티(tea) 루틴 기록 서비스</p>
+                        <p class="pj-desc">- 다도(茶道)와 감정 기록을 결합한 감성 기반 웹서비스</p>
+                        <p class="pj-desc">- Flexbox를 활용한 정돈된 레이아웃, 반응형 페이지 구성</p>
+                        <p class="pj-desc">- 스크롤 애니메이션(IntersectionObserver) 및 hover 효과로 차분하고 따뜻한 UX 구현</p>
+                        <p class="pj-desc">- 차를 우리는 행위로 마음을 내리는 경험”을 웹으로 시각화한 프로젝트</p>
+                        <div class="pj-tag_area">
+                            <span class="pj-tag">HTML</span>
+                            <span class="pj-tag">CSS</span>
+                            <span class="pj-tag">JS</span>
+                            <span class="pj-tag">Swiper.js</span>
+                            <span class="pj-tag">IntersectionObserver</span>
+                        </div>
+                        <div class="btn_area">
+                            <a href="https://jan-nabee.github.io/chaboon-diary-index/" class="btn" target="_blank" rel="noopener">Live Demo</a>
+                            <a href="https://github.com/Jan-nabee/chaboon-diary-index" class="btn" target="_blank" rel="noopener">GitHub</a>
+                        </div>
                     </div>
                 </div>
                 <article class="project-box">
@@ -338,8 +361,9 @@
                             <span class="pj-tag">Swiper.js</span>
                         </div>
                         <div class="btn_area">
-                            <a href="" class="btn" target="_blank" rel="noopener">Live Demo</a>
-                            <a href="" class="btn" target="_blank" rel="noopener">GitHub</a>
+                            <a href="https://jan-nabee.github.io/biff-clone/" class="btn" target="_blank" rel="noopener">Live Demo</a>
+                            <a href="https://github.com/Jan-nabee/biff-clone" class="btn" target="_blank" rel="noopener">GitHub</a>
+                            <a href="https://velog.io/@jan-nabee/%EC%9E%90%EC%97%B0%EC%8A%A4%EB%9F%BD%EA%B2%8C-%ED%9D%98%EB%9F%AC%EA%B0%80%EB%8A%94-%EC%8A%A4%ED%8F%B0%EC%84%9C-%EB%A1%9C%EA%B3%A0-%EC%8A%AC%EB%9D%BC%EC%9D%B4%EB%93%9C-%EB%A7%8C%EB%93%A4%EA%B8%B0" class="btn" target="_blank" rel="noopener">Vlog 제작기</a>
                         </div>
                     </div>
                 </article>
@@ -355,8 +379,12 @@
 
         </main>
     </div>
+     <!-- gsap -->
+    <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 
     <script src="js/gayeon.js"></script>
+    
 
 </body>
 </html>

@@ -59,10 +59,12 @@ body {
   border-bottom: 1px solid #2D2D2A;
   z-index: 100;
 }
-.upperbar > img {
+.upperbar img {
   width: 19px; height: 19px;
+  display: inline-block;
+  transform: translateY(3px);
 }
-.upperbar > span {
+.upperbar span {
   font-family: "Pretendard Variable";
   font-weight: 400;
   font-size: 18px;
