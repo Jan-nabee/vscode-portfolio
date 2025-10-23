@@ -201,63 +201,62 @@ $(document).ready(function () {
   });
 
   
-
-
 });
 
-// === About 섹션 애니메이션 ===
-(function(){
-  if (!window.gsap) return;
-  gsap.registerPlugin(ScrollTrigger);
 
-  // 불필요한 연산 방지용 플래그
-  let aboutAnimated = false;
+// === 프로젝트 페이지 필터 ===
+  $('.filter-btn').on('click', function() {
+    const $btn = $(this);
+    const filter = $btn.data('filter'); // all | frontend | branding
 
-  window.initAboutGsap = function initAboutGsap(){
-    if (aboutAnimated) return;
-    const $about = document.querySelector('.about_page');
-    if (!$about || getComputedStyle($about).display === 'none') return;
+    // 버튼 상태 업데이트
+    $('.filter-btn').removeClass('is-active').attr('aria-pressed', 'false');
+    $btn.addClass('is-active').attr('aria-pressed', 'true');
 
-    aboutAnimated = true;
+    // URL 해시 동기화
+    if (filter === 'all') history.replaceState(null, '', location.pathname);
+    else location.hash = filter;
 
-    // ① 상단 타이틀/카피
-    gsap.from($about.querySelectorAll('.about-title, .left-border > .about-history > span, .front-ability .copy'), {
-      opacity: 0, y: 20, duration: 0.6, stagger: 0.08, ease: 'power2.out'
-    });
+    const $cards = $('.projects-grid .project-box');
 
-    // ② 학습 요약 목록(점선문장들)
-    gsap.from($about.querySelectorAll('.front-ability .subcopy p'), {
-      opacity: 0, x: -16, duration: 0.5, stagger: 0.06, delay: 0.2, ease: 'power2.out'
-    });
-
-    // ③ Role 카드 (아이콘 살짝 튕김)
-    gsap.from('.role-list .role-item', {
-      opacity: 0, y: 26, duration: 0.7, stagger: 0.12, delay: 0.25, ease: 'power3.out'
-    });
-    gsap.from('.role-list .role-item img', {
-      scale: 0.85, duration: 0.6, stagger: 0.12, delay: 0.35, ease: 'back.out(1.7)'
-    });
-
-    // ④ 슬로건
-    gsap.from('.impact-phrase', {
-      opacity: 0, y: 10, duration: 0.6, delay: 0.4, ease: 'power2.out'
-    });
-
-    // 스크롤에 따라 Role 카드 살짝 부유감(패럴랙스 느낌)
-    gsap.utils.toArray('.role-item').forEach((card, i) => {
-      gsap.to(card, {
-        y: -8,
-        scrollTrigger: {
-          trigger: card,
-          start: 'top 85%',
-          end: 'bottom 60%',
-          scrub: true
+    if (filter === 'all') {
+      $cards.each(function() {
+        const $c = $(this);
+        if ($c.hasClass('is-hidden')) {
+          $c.removeClass('is-hidden').hide().fadeIn(160);
         }
       });
+      return;
+    }
+
+    // 필터별 표시
+    $cards.each(function() {
+      const $c = $(this);
+      const match = $c.hasClass(filter);
+      if (match) {
+        if ($c.hasClass('is-hidden')) {
+          $c.removeClass('is-hidden').hide().fadeIn(160);
+        }
+      } else {
+        if (!$c.hasClass('is-hidden')) {
+          $c.addClass('is-hiding');
+          setTimeout(function() {
+            $c.addClass('is-hidden').removeClass('is-hiding');
+          }, 140);
+        }
+      }
     });
+  });
 
-    // 새로고침/탭 전환 대비
-    requestAnimationFrame(() => ScrollTrigger.refresh());
-  };
+  // 페이지 진입 시 URL 해시 (#frontend / #branding)로 초기 필터 적용
+  (function initFilterFromHash(){
+    const hash = (location.hash || '').replace('#','');
+    if (!hash) return;
+    const $btn = $('.filter-btn[data-filter="'+ hash +'"]');
+    if ($btn.length) $btn.trigger('click');
+  })();
 
-})();
+
+
+
+
